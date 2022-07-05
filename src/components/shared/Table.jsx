@@ -79,6 +79,7 @@ const TableView = styled.div`
     flex-direction: column;
     width: 100%;
     padding: 10px;
+    height: 700px;
 `;
 
 export default Table;

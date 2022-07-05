@@ -56,7 +56,7 @@ function SelectFile({onParseCompleted, withHeader}) {
             </StyledDiv>
             <StyledAside>
                 <h4>File</h4>
-                <ul>{filePath}</ul>
+                {filePath.length > 0 && <ul>{filePath}</ul>}
             </StyledAside>
         </section>
     );
