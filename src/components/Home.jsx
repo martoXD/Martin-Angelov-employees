@@ -18,7 +18,7 @@ const defaultRowsToSelect = 1;
 
 function Home() {
     const [filteredCsvData, setfilteredCsvData] = useState([]);
-    const [rowsToSelect, setRowsToSelect] = useState(1);
+    const [rowsToSelect, setRowsToSelect] = useState(defaultRowsToSelect);
 
     const onParseCompleted = useCallback(async (parsedData) => {
         let filteredData = await filterData(parsedData, filter, rowsToSelect);
