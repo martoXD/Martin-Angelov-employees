@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { string, func } from 'prop-types';
 
 function Input(props) {
     return (
@@ -14,5 +15,11 @@ const InputStyled = styled.input`
     border-style: dashed;
     outline: none;
 `;
+
+Input.propTypes = {
+    type: string.isRequired,
+    placeholder: string.isRequired,
+    onInputChange: func.isRequired
+};
 
 export default Input;

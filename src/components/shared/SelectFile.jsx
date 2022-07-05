@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import { useDropzone } from 'react-dropzone';
 import Papa from 'papaparse';
+import { bool, func } from 'prop-types';
 
 const acceptedFileExtensions = ['.csv'];
 const getColor = (props) => {
@@ -83,6 +84,11 @@ const StyledAside = styled.aside`
     align-items: center;
     color: #43454a;
 `;
+
+SelectFile.prototype = {
+    onParseCompleted: func.isRequired,
+    withHeader: bool.isRequired
+};
 
 export default SelectFile;
 

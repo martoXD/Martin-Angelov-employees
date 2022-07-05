@@ -24,11 +24,7 @@ export const filterData = async (data, filter, rowsToSelect) => {
                                             employees = {...employees, daysWorked: daysDiff};
                                         }
                                         previousEmployeeDays = daysDiff;
-                                        //totalDays = daysDiff;
-                                        console.log(previousEmployeeDays, '-', daysDiff);
-                                        console.log(employees);
                                     }
-                                    //console.log(employees.daysWorked);
                                     return employees;
                                 })
                                 .orderBy(e => e.daysWorked, ['desc'])
@@ -45,10 +41,10 @@ export const filterData = async (data, filter, rowsToSelect) => {
 
 const parseDates = (fromDate, toDate) => {
     let fromDateParsed = moment(fromDate, config.DATE_FORMATS);
-    let toDateParsed = moment(toDate === 'NULL' ? new Date() : toDate, config.DATE_FORMATS);
-
+    let toDateParsed = moment(toDate === 'NULL' ? moment() : toDate, config.DATE_FORMATS);
+  
     let difference = fromDateParsed.valueOf() - toDateParsed.valueOf();
-    //console.log(fromDateParsed, toDateParsed, fromDateParsed.valueOf());
+    
     return Math.abs(Math.ceil(difference / (1000 * 3600 * 24)));
 };
 

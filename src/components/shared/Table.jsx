@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { array, object } from 'prop-types';
 
 const renderRowData = (rowData, i) => {
     if(Array.isArray(rowData)){
@@ -10,13 +11,26 @@ const renderRowData = (rowData, i) => {
     }
 };
 
+const renderHeaderData = (headerData, i, arrLength) => {
+    let headers = [];
+    if(arrLength > 0 && Array.isArray(headerData)){
+        for(let i = 1; i <= arrLength; i++){
+            headers.push(<HeaderText key={i}>{`Employee ID #${i}`}</HeaderText>);
+        }
+        return headers;
+    }
+    else{
+        return <HeaderText key={i}>{headerData}</HeaderText>
+    }
+};
+
 function Table({data, headers}) {
     return (
         <TableView>
             <Header>
-                {Object.values(headers).map((value,i) =>{
+                {Object.values(headers).map((value,i) => {
                     return (
-                        <HeaderText key={i}>{value}</HeaderText>
+                        renderHeaderData(value,i,data[0].employeeIDs?.length)
                     )
                 })}
             </Header>
@@ -81,6 +95,11 @@ const TableView = styled.div`
     padding: 10px;
     height: 700px;
 `;
+
+Table.propTypes = {
+    data: array.isRequired,
+    headers: object.isRequired
+};
 
 export default Table;
 
